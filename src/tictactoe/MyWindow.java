@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MyWindow extends javax.swing.JFrame implements WindowListener,ActionListener {
+    
+    
 
     public Table table;
     
@@ -71,11 +73,20 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
     
     public MyWindow(Table table) throws IOException {
         
+        BufferedImage circle = null;
+        BufferedImage cross = null;
+        BufferedImage field = null;
+        try {
+        circle = ImageIO.read(new File("src/circle.png"));
+        cross = ImageIO.read(new File("src/cross.png"));
+        field = ImageIO.read(new File("src/field.png"));
+        } catch (IOException e) {
+        }
+        
         setUndecorated(true);
         initComponents();
         this.table = table;
         try {
-                Image field = ImageIO.read(new FileInputStream("src/field.png"));
                 jButton1.setIcon(new ImageIcon(field));
                 jButton2.setIcon(new ImageIcon(field));
                 jButton3.setIcon(new ImageIcon(field));
@@ -95,7 +106,7 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
     
     private void initComponents() throws IOException {
         
-        BufferedImage img = ImageIO.read(new File("src/HUD.png"));
+        
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -240,7 +251,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         // Layout y los JPanel que agregamos
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        getContentPane().setBackground(new Color(23, 47, 59));
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
