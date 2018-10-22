@@ -1,11 +1,15 @@
-Ta Te Ti
+# Ta Te Ti
+
 Mi primer proyecto Java
 
-Requisitos
+### Requisitos
+
 Necesitas tener Java Runtime Environment instalado para poder abrir el archivo compilado
 
-Autor
+### Autor
+
 Barrea Pablo aka Omniboy
 
-Licencia
+### Licencia
+
 GNU GPLv3
