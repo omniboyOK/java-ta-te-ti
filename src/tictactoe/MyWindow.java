@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -44,7 +46,9 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         jButton9.setEnabled(rootPaneCheckingEnabled); 
         }else{
             try {
-                Image field = ImageIO.read(new FileInputStream("src/field.png"));
+                BufferedImage circle = ImageIO.read(getClass().getResourceAsStream("circle.png"));
+                BufferedImage cross = ImageIO.read(getClass().getResourceAsStream("cross.png"));
+                BufferedImage field = ImageIO.read(getClass().getResourceAsStream("field.png"));
                 jButton1.setIcon(new ImageIcon(field));
                 jButton2.setIcon(new ImageIcon(field));
                 jButton3.setIcon(new ImageIcon(field));
@@ -73,15 +77,11 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
     
     public MyWindow(Table table) throws IOException {
         
-        BufferedImage circle = null;
-        BufferedImage cross = null;
-        BufferedImage field = null;
-        try {
-        circle = ImageIO.read(new File("src/circle.png"));
-        cross = ImageIO.read(new File("src/cross.png"));
-        field = ImageIO.read(new File("src/field.png"));
-        } catch (IOException e) {
-        }
+        
+        BufferedImage circle = ImageIO.read(getClass().getResourceAsStream("circle.png"));
+        BufferedImage cross = ImageIO.read(getClass().getResourceAsStream("cross.png"));
+        BufferedImage field = ImageIO.read(getClass().getResourceAsStream("field.png"));
+        
         
         setUndecorated(true);
         initComponents();
@@ -363,6 +363,12 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        try {
+            BufferedImage circle = ImageIO.read(getClass().getResourceAsStream("circle.png"));
+            BufferedImage cross = ImageIO.read(getClass().getResourceAsStream("cross.png"));
+            BufferedImage field = ImageIO.read(getClass().getResourceAsStream("field.png"));
+            
                 
         table.addTurn();
         System.out.println(table.getTurn());
@@ -391,8 +397,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton1.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
                 try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton1.setIcon(new ImageIcon(circle));
                 }else{
@@ -408,8 +412,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton2.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton2.setIcon(new ImageIcon(circle));
                 }else{
@@ -425,8 +427,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton3.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton3.setIcon(new ImageIcon(circle));
                 }else{
@@ -442,8 +442,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton4.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton4.setIcon(new ImageIcon(circle));
                 }else{
@@ -459,8 +457,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton5.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton5.setIcon(new ImageIcon(circle));
                 }else{
@@ -476,8 +472,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton6.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton6.setIcon(new ImageIcon(circle));
                 }else{
@@ -493,8 +487,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton7.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton7.setIcon(new ImageIcon(circle));
                 }else{
@@ -510,8 +502,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton8.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton8.setIcon(new ImageIcon(circle));
                 }else{
@@ -527,8 +517,6 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
            jButton9.setEnabled(false);
            table.changePlayer1(table.isPlayer1Playing());
            try {
-                Image circle = ImageIO.read(new FileInputStream("src/circle.png"));
-                Image cross = ImageIO.read(new FileInputStream("src/cross.png"));
                 if(chessCircle){
                     jButton9.setIcon(new ImageIcon(circle));
                 }else{
@@ -561,6 +549,10 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         }
         
     checkVictory(player);
+        } catch (IOException ex) {
+            Logger.getLogger(MyWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
                 
     }
     
