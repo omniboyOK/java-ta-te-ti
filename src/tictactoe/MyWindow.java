@@ -1,5 +1,6 @@
 package tictactoe;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         if(!(table.isPlaying())){
         table.setPlaying(true);
         jLabel1.setText("Jugador 1 elige una casilla");
+        
         jButton1.setEnabled(rootPaneCheckingEnabled);
         jButton2.setEnabled(rootPaneCheckingEnabled);
         jButton3.setEnabled(rootPaneCheckingEnabled);
@@ -39,16 +41,22 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         jButton8.setEnabled(rootPaneCheckingEnabled);
         jButton9.setEnabled(rootPaneCheckingEnabled); 
         }else{
+            try {
+                Image field = ImageIO.read(new FileInputStream("src/field.png"));
+                jButton1.setIcon(new ImageIcon(field));
+                jButton2.setIcon(new ImageIcon(field));
+                jButton3.setIcon(new ImageIcon(field));
+                jButton4.setIcon(new ImageIcon(field));
+                jButton5.setIcon(new ImageIcon(field));
+                jButton6.setIcon(new ImageIcon(field));
+                jButton7.setIcon(new ImageIcon(field));
+                jButton8.setIcon(new ImageIcon(field));
+                jButton9.setIcon(new ImageIcon(field));
+                
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
             jLabel1.setText("Jugador 1 elige una casilla");
-            jButton1.setIcon(null);
-            jButton2.setIcon(null);
-            jButton3.setIcon(null);
-            jButton4.setIcon(null);
-            jButton5.setIcon(null);
-            jButton6.setIcon(null);
-            jButton7.setIcon(null);
-            jButton8.setIcon(null);
-            jButton9.setIcon(null);
             jButton1.setEnabled(rootPaneCheckingEnabled);
             jButton2.setEnabled(rootPaneCheckingEnabled);
             jButton3.setEnabled(rootPaneCheckingEnabled);
@@ -66,6 +74,21 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         setUndecorated(true);
         initComponents();
         this.table = table;
+        try {
+                Image field = ImageIO.read(new FileInputStream("src/field.png"));
+                jButton1.setIcon(new ImageIcon(field));
+                jButton2.setIcon(new ImageIcon(field));
+                jButton3.setIcon(new ImageIcon(field));
+                jButton4.setIcon(new ImageIcon(field));
+                jButton5.setIcon(new ImageIcon(field));
+                jButton6.setIcon(new ImageIcon(field));
+                jButton7.setIcon(new ImageIcon(field));
+                jButton8.setIcon(new ImageIcon(field));
+                jButton9.setIcon(new ImageIcon(field));
+                
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
     }
 
     @SuppressWarnings("unchecked")
@@ -217,6 +240,7 @@ public class MyWindow extends javax.swing.JFrame implements WindowListener,Actio
         // Layout y los JPanel que agregamos
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
+        getContentPane().setBackground(new Color(23, 47, 59));
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
